@@ -26,8 +26,8 @@ const TRIP = {
     { what: "Aifur (Viking restaurant)", when: "Fri 21 Aug, 20:15", price: "à la carte", status: "booked", statusText: "Booked" },
     { what: "Glenn Miller Café (jazz)", when: "Tue 18 Aug, 19:30", price: "à la carte", status: "booked", statusText: "Booked" },
     { what: "Eclipse-night dinner, Södermalm", when: "Wed 12 Aug, after 21:00", price: "—", status: "pending", statusText: "Friend is booking — aim 21:15–21:30 near Mariatorget/Hornstull" },
-    { what: "Skansen — children's tickets", when: "Thu 13 Aug", price: "0–15 free, adult ~245", status: "warning", statusText: "Free but must still be pre-booked at skansen.se" },
-    { what: "Strömma boat to Vaxholm", when: "Fri 14 Aug, 12:00 from Strandvägen", price: "~190 SEK adult one way", status: "pending", statusText: "Pre-book, or take Waxholmsbolaget free with SL pass" },
+    { what: "Skansen — children's tickets", when: "Sun 16 Aug (moved from Thu 13)", price: "0–15 free, adult ~245", status: "done", statusText: "Done — visited Day 6 instead of Day 3" },
+    { what: "Vaxholm boat", when: "Fri 14 Aug, 12:00 from Strömkajen", price: "Free — Waxholmsbolaget with SL pass", status: "done", statusText: "Done — went and came back entirely on the SL pass, skipped the paid Strömma steamer" },
     { what: "Södermalm dinner — race night", when: "Sat 15 Aug, ~16:30", price: "—", status: "warning", statusText: "Book ahead or eat off-island" },
     { what: "Drottningholm boat", when: "Wed 19 Aug, 10:00 from Klara Mälarstrand", price: "220 SEK adult return", status: "pending", statusText: "Pre-book" },
     { what: "Cosmonova film slot", when: "Tue 18 Aug", price: "260 SEK adult combo", status: "warning", statusText: "Book on arrival — timed showings sell out" },
@@ -93,8 +93,8 @@ const TRIP = {
   ],
 
   tripSummary: [
-    { range: "Aug 11–13", focus: "Arrival, the historic core & the eclipse", highlights: "Gamla Stan, Royal Palace + guided tour, eclipse from Skinnarviksberget, Vasamuseet, Skansen" },
-    { range: "Aug 14–16", focus: "Water & the big night", highlights: "Vaxholm + the Kastell, the archipelago, Midnattsloppet, Fjäderholmarna" },
+    { range: "Aug 11–13", focus: "Arrival, the historic core & the eclipse", highlights: "Gamla Stan, Royal Palace + guided tour, eclipse from Skinnarviksberget, a full day at Vasamuseet" },
+    { range: "Aug 14–16", focus: "Water, the guard, and the big night", highlights: "Vaxholm + the Kastell by public boat, Changing of the Guard, a Catalan folk festival, Midnattsloppet, Skansen" },
     { range: "Aug 17–19", focus: "Wrecks, rides, science & royalty", highlights: "Vrak, Gröna Lund, Naturhistoriska + Cosmonova, Bergianska, Glenn Miller, Drottningholm" },
     { range: "Aug 20–22", focus: "Vikings, art & parks", highlights: "Sigtuna rune stones, Skeppsholmen + Moderna, Aifur, Hagaparken, Ulriksdal" },
     { range: "Aug 23–25", focus: "Winding down", highlights: "Fotografiska, Nobel + City Hall, farewell dinner, departure" }
@@ -132,9 +132,7 @@ const TRIP = {
       banner: "eclipse",
       schedule: [
         { time: "09:00", html: "Breakfast, then commuter train to Stockholm City, metro to Gamla Stan." },
-        { time: "10:00–11:45", html: "<strong>Wander Gamla Stan.</strong> Start at Stortorget, then Västerlånggatan, into Storkyrkan, and find Mårten Trotzigs Gränd. Don't rush — the Old Town rewards drifting." },
-        { time: "11:50", html: "<strong>Get into position at the palace.</strong> Ten minutes early is the difference between a clear view and other people's shoulders." },
-        { time: "12:15", html: "<strong>Changing of the Guard.</strong> Free, ~40 minutes. Wednesday has the full ceremonial parade, forming up at Mynttorget." },
+        { time: "10:00–12:45", html: "<strong>Wander Gamla Stan, unhurried.</strong> Start at Stortorget, then Västerlånggatan, into Storkyrkan, and find Mårten Trotzigs Gränd. Skipped the Changing of the Guard this time — it happened instead on Day 5, a lucky accident — so the Old Town got the long, no-rush version instead." },
         { time: "13:00–14:15", html: "<strong>Lunch in the Old Town.</strong> Stora Nygatan and Österlånggatan rather than Västerlånggatan. Order the dagens lunch." },
         { time: "14:30–15:15", html: "<strong>Guided tour of the Royal Palace</strong> — included for a 30 SEK supplement, free for kids." },
         { time: "15:15–16:45", html: "The <strong>Treasury</strong> (crown jewels) and the <strong>Tre Kronor Museum</strong>, both included in your ticket." },
@@ -157,7 +155,7 @@ const TRIP = {
       ],
       places: [
         { name: "Stortorget / Gamla Stan", wiki: "Gamla stan", url: "https://www.visitstockholm.com/see-do/attractions/gamla-stan/", lat: 59.3251, lng: 18.0711, note: "Old Town wander" },
-        { name: "Royal Palace", wiki: "Stockholm Palace", url: "https://www.kungligaslotten.se/english/royal-palaces-and-sites/the-royal-palace.html", lat: 59.3269, lng: 18.0715, note: "Changing of the Guard 12:15, guided tour 14:30" },
+        { name: "Royal Palace", wiki: "Stockholm Palace", url: "https://www.kungligaslotten.se/english/royal-palaces-and-sites/the-royal-palace.html", lat: 59.3269, lng: 18.0715, note: "Guided tour 14:30 (Changing of the Guard ended up happening on Day 5 instead)" },
         { name: "Skinnarviksberget", wiki: "Skinnarviksberget", url: "", lat: 59.3168, lng: 18.0308, note: "🌓 Eclipse viewing 18:45–20:47" },
         { name: "Monteliusvägen", wiki: "Monteliusvägen", url: "", lat: 59.3186, lng: 18.0429, note: "Cliff-top walk down after the eclipse" }
       ],
@@ -166,27 +164,23 @@ const TRIP = {
     // ---------------- DAY 3 ----------------
     {
       n: 3, date: "2026-08-13", weekday: "Thursday",
-      title: "Djurgården — Vasa & Skansen",
-      tagline: "The biggest day of the trip · Re-timed for how your family actually visits museums",
+      title: "Vasamuseet — the Whole Day",
+      tagline: "The ship won, hands down · Skansen got pushed to Day 6 instead",
       schedule: [
-        { time: "07:15", html: "Early breakfast — the one day worth an alarm. (If eclipse night hurts, push everything an hour and cut Skansen short instead of the Vasa.)" },
+        { time: "07:15", html: "Early breakfast — the one day worth an alarm." },
         { time: "08:30–12:00", html: "<strong>Vasamuseet, at opening.</strong> Galärvarvsvägen 14. Adults 240 SEK, under-19s free. Being there when doors open is the whole trick." },
-        { time: "12:15–13:15", html: "<strong>Lunch.</strong> The museum's own restaurant, or cafés along Djurgårdsvägen." },
-        { time: "13:30–18:00", html: "<strong>Skansen.</strong> Djurgårdsslätten 49–51, open 10:00–18:00. Check the feeding-times board at the entrance." },
-        { time: "within Skansen", html: "Included: the Nordic zoo (bears, wolves, lynx, wolverines, moose), Lill-Skansen children's zoo, Baltic Sea Science Center. Not included: Skansen Akvariet — skip it." },
-        { time: "18:15", html: "Tram 7 back to the centre, or the Djurgården ferry to Slussen (free with your pass, prettier)." },
-        { time: "Evening", html: "Something easy near the flat. Don't book anything demanding." }
+        { time: "12:15–13:15", html: "<strong>Lunch.</strong> The museum's own restaurant." },
+        { time: "13:15–17:00", html: "<strong>Back in for a second, slower pass.</strong> Skansen ended up not happening today — the ship held everyone's attention for the whole day instead. Second loop through the exhibits, the film, the model workshop and the gift shop, at no rush at all." },
+        { time: "17:15", html: "Tram 7 back to the centre, or the Djurgården ferry to Slussen (free with your pass, prettier)." },
+        { time: "Evening", html: "Something easy near the flat." }
       ],
       info: [
-        { heading: "⚠️ Note", html: "Skansen children's tickets are free but must still be pre-booked at skansen.se. Book adults online too — gate price is 250–305 SEK against ~245 online." },
         { heading: "Vasamuseet — What to Know", html: "On <strong>10 August 1628</strong> the warship <em>Vasa</em> sailed on her maiden voyage, heeled over in a gust, and sank roughly 1,300 metres into the journey. She lay in the mud for <strong>333 years</strong> and was raised on 24 April 1961 — roughly <strong>98% original</strong>, 69 metres long, the most visited museum in Scandinavia." },
-        { heading: "Skansen — What to Know", html: "Founded in <strong>1891</strong> by Artur Hazelius, Skansen is the <strong>world's oldest open-air museum</strong>. Around 150 buildings bought from across Sweden, dismantled, and rebuilt here. Attached is a Nordic zoo: brown bears, wolves, lynx, wolverines, moose and seals." },
         { heading: "💡 Did you know?", html: "Vasa survived only because the Baltic is brackish — too fresh for the shipworm that devours submerged timber elsewhere. After salvage she was sprayed with polyethylene glycol for 17 years and is still being conserved today." },
-        { heading: "🧒 Kids", html: "At the Vasa: find the carved lions, warriors and sea creatures on the stern, and the recovered objects — shoes, a backgammon set, a sewing kit. Ask: why did nobody stop the king? At Skansen: check feeding times, then go find the wolverines." }
+        { heading: "🧒 Kids", html: "Find the carved lions, warriors and sea creatures on the stern, and the recovered objects — shoes, a backgammon set, a sewing kit. Ask: why did nobody stop the king?" }
       ],
       places: [
-        { name: "Vasamuseet", wiki: "Vasa Museum", url: "https://www.vasamuseet.se/en", lat: 59.3280, lng: 18.0914, note: "Open 08:30–18:00 · 240 SEK adult, under-19 free" },
-        { name: "Skansen", wiki: "Skansen", url: "https://www.skansen.se/en/", lat: 59.3252, lng: 18.1032, note: "Open 10:00–18:00 · pre-book online" }
+        { name: "Vasamuseet", wiki: "Vasa Museum", url: "https://www.vasamuseet.se/en", lat: 59.3280, lng: 18.0914, note: "Open 08:30–18:00 · 240 SEK adult, under-19 free · spent the whole day here" }
       ],
       photos: { album: "", images: [] }
     },
@@ -194,28 +188,28 @@ const TRIP = {
     {
       n: 4, date: "2026-08-14", weekday: "Friday",
       title: "Vaxholm, the Kastell & the Archipelago",
-      tagline: "Built around your 12:00 boat · Bus back · The most weather-sensitive day in the plan",
+      tagline: "Built around the boats · Went and came back entirely on the SL pass · The most weather-sensitive day in the plan",
       schedule: [
         { time: "10:30", html: "Slow morning — midday boat, no rush." },
-        { time: "11:30", html: "<strong>To Strandvägen.</strong> Commuter train to Stockholm City, then a short walk or one metro stop. Be at the quay 20 minutes early." },
-        { time: "12:00", html: "<strong>⛴️ Sail on S/S Stockholm</strong> — Stromma's 1931 flagship, guided in English on the 12:00 departure. ~190 SEK adult one way." },
+        { time: "11:30", html: "<strong>To Strömkajen.</strong> Commuter train to Stockholm City, then a short walk or one metro stop. Be at the quay 20 minutes early." },
+        { time: "12:00", html: "<strong>⛴️ Waxholmsbolaget boat to Vaxholm</strong> — free with the SL 30-day pass, no extra ticket needed. Went this way both out and back, and it was lovely." },
         { time: "~13:00", html: "<strong>Arrive in Vaxholm.</strong> Wooden houses in faded pastels, a working harbour." },
         { time: "13:00–14:15", html: "<strong>Lunch by the water.</strong> Herring, prawns, or whatever was landed this morning." },
         { time: "14:30", html: "<strong>Ferry across to Vaxholms Kastell.</strong> M/S Djurgården 4 runs every 20 minutes, 10:20–17:20. Round trip 110 SEK adult / 80 SEK child." },
         { time: "14:45–16:30", html: "<strong>Vaxholm Fortress Museum.</strong> Open daily 11:00–17:00. 120 SEK adult, free 0–12 — both kids free." },
         { time: "16:45", html: "<strong>Ferry back to Vaxholm.</strong> Last one at 17:20 — do not miss it." },
         { time: "17:00–18:30", html: "<strong>Swim, wander, ice cream.</strong> Bring swimwear." },
-        { time: "~18:45", html: "<strong>Bus 670 home</strong> from Vaxholm Västerhamnsplan to Tekniska högskolan (red line), ~51 min, free with your travel pass." }
+        { time: "~18:45", html: "<strong>Waxholmsbolaget boat back to Strömkajen</strong> — the same free SL-pass boat, the whole round trip on public transport." }
       ],
       info: [
-        { heading: "⛴️ The free alternative", html: "Your SL 30-day ticket also covers Waxholmsbolaget's boats between Strömkajen and Vaxholm — no extra charge. Take the free boat one way and pay for the Stromma steamer (1931, English commentary) the other." },
+        { heading: "⛴️ What we actually did", html: "Skipped the paid Strömma steamer entirely — the SL 30-day ticket covers Waxholmsbolaget's boats between Strömkajen and Vaxholm year-round, so the whole day out and back was free with the pass already in your pocket. No booking, no extra cost, and it was a genuinely nice ride both ways." },
         { heading: "The Stockholm Archipelago", html: "Roughly <strong>30,000 islands, islets and skerries</strong> spread east towards the Baltic. Post-glacial rebound lifts this coast by several millimetres a year — new rocks genuinely emerge within a human lifetime." },
         { heading: "Vaxholm Fortress", html: "Vaxholm sits on the narrow channel any ship must pass to reach Stockholm from the sea. Gustav Vasa fortified it in <strong>1548</strong>. Tested against a Danish fleet in 1612 and the Russians in 1719. The blocky citadel today is a rebuild from the 1830s–60s." },
         { heading: "💡 Did you know?", html: "Sweden has <em>allemansrätten</em> — the 'right of public access'. Anyone may walk, swim, camp for a night, and pick berries almost anywhere, including private land, as long as they do no damage." },
         { heading: "🧒 Kids", html: "On the way out, count islands — it becomes impossible surprisingly fast. At the fortress, work out the sightlines: why here?" }
       ],
       places: [
-        { name: "Strandvägen (departure)", wiki: "Strandvägen", url: "", lat: 59.3327, lng: 18.0868, note: "12:00 boat to Vaxholm" },
+        { name: "Strömkajen (departure)", wiki: "Strömkajen", url: "https://www.waxholmsbolaget.se/en/", lat: 59.3308, lng: 18.0763, note: "12:00 Waxholmsbolaget boat to Vaxholm, free with SL pass" },
         { name: "Vaxholm", wiki: "Vaxholm", url: "https://www.waxholmsbolaget.se/en/", lat: 59.4025, lng: 18.3522, note: "Harbour town, lunch, swimming" },
         { name: "Vaxholms Kastell", wiki: "Vaxholm Fortress", url: "https://www.vaxholmsfastning.se/en/", lat: 59.4064, lng: 18.3453, note: "Fortress museum, 14:45–16:30" }
       ],
@@ -224,13 +218,14 @@ const TRIP = {
     // ---------------- DAY 5 ----------------
     {
       n: 5, date: "2026-08-15", weekday: "Saturday",
-      title: "Södermalm & Midnattsloppet",
-      tagline: "Daytime free · You are watching the race, not running it · A late night",
+      title: "Changing of the Guard, a Catalan Festival & Midnattsloppet",
+      tagline: "The guard ceremony that skipped Day 2 turned up here instead · A festival you stumbled on · A late night",
       schedule: [
-        { time: "Late morning", html: "<strong>Cross to Södermalm.</strong> You already know the way up to Monteliusvägen from eclipse night." },
-        { time: "12:00–13:00", html: "<strong>Monteliusvägen by daylight.</strong> A 500 m cliff-top walkway with the best skyline view in Stockholm. Free." },
-        { time: "13:00–16:00", html: "<strong>SoFo, at a wander.</strong> Blocks south of Folkungagatan: vintage shops, Swedish design, record stores, coffee." },
-        { time: "~16:30", html: "<strong>Early dinner. Book ahead or eat off-island</strong> — Södermalm is swamped on race night." },
+        { time: "09:00", html: "<strong>To Gamla Stan.</strong> Commuter train to Stockholm City, metro to Gamla Stan." },
+        { time: "11:50", html: "<strong>Get into position at the Royal Palace.</strong> Ten minutes early made the difference." },
+        { time: "12:15", html: "<strong>Changing of the Guard.</strong> The ceremony that didn't happen on Day 2 — free, ~40 minutes, forming up at Mynttorget." },
+        { time: "13:00–16:00", html: "<strong>A Catalan folk festival, found by chance nearby.</strong> Stumbled onto castellers and sardana dancing in the streets around the Old Town — not on the original plan at all, and one of the best surprises of the trip. Watched the human towers go up, wandered the stalls, stayed for the music." },
+        { time: "~16:30", html: "<strong>Early dinner</strong> before crossing to Södermalm — it fills up fast on race night." },
         { time: "18:30–18:50", html: "<strong>Lilla Midnattsloppet</strong> — the 2 km kids' race. Ages 7–13, released in waves by age. Your two's exact age group." },
         { time: "20:45", html: "<strong>Claim a spot on Ringvägen</strong>, near the start, for the mass send-off." },
         { time: "21:15", html: "<strong>🏁 Mass start — 21 km and 10 km.</strong> Tens of thousands of runners released into a summer night." },
@@ -240,11 +235,12 @@ const TRIP = {
       info: [
         { heading: "Midnattsloppet — What to Know", html: "The 'Midnight Race' has run since <strong>1982</strong>, well over twenty thousand runners across its distances, looping through Södermalm after dark. The adult races are sold out — you're spectators, and it's the better family experience anyway. Bands, sound systems, spectators drinking on balconies, runners in costume." },
         { heading: "⚠️ Race-night practicalities", html: "Streets close from late afternoon. Use the metro — Zinkensdamm or Hornstull on the red line — no bus or taxi will cross the course. Bring a warm layer each. Nothing to book, nothing to pay." },
-        { heading: "🧒 Kids", html: "Give them a costume scoreboard for the masquerade waves — a point for anything in a full-body suit, five for a group costume. Watch the 12- and 9-year-olds' waves separately." }
+        { heading: "🧒 Kids", html: "At the castells, watch for the <em>enxaneta</em> — the child who climbs to the very top and raises a hand once the tower is complete. Then give them a costume scoreboard for the masquerade waves — a point for anything in a full-body suit, five for a group costume. Watch the 12- and 9-year-olds' waves separately." },
+        { heading: "📝 Note", html: "The original plan for today's daytime had a Monteliusvägen walk and a SoFo wander instead — those got bumped for the guard ceremony and the festival. They're picked back up on Day 13, which already has a Södermalm afternoon built in." }
       ],
       places: [
-        { name: "Monteliusvägen", wiki: "Monteliusvägen", url: "", lat: 59.3186, lng: 18.0429, note: "Cliff-top walk, best skyline view" },
-        { name: "SoFo", wiki: "Södermalm", url: "", lat: 59.3141, lng: 18.0764, note: "Vintage shops, design, coffee" },
+        { name: "Royal Palace", wiki: "Stockholm Palace", url: "https://www.kungligaslotten.se/english/royal-palaces-and-sites/the-royal-palace.html", lat: 59.3269, lng: 18.0715, note: "Changing of the Guard 12:15" },
+        { name: "Stortorget / Gamla Stan", wiki: "Gamla stan", url: "https://www.visitstockholm.com/see-do/attractions/gamla-stan/", lat: 59.3251, lng: 18.0711, note: "Catalan folk festival, castellers & sardana" },
         { name: "Ringvägen (race start)", wiki: "Midnattsloppet", url: "https://midnattsloppet.com/en/stockholm/", lat: 59.3139, lng: 18.0554, note: "21:15 mass start" }
       ],
       photos: { album: "", images: [] }
@@ -252,23 +248,23 @@ const TRIP = {
     // ---------------- DAY 6 ----------------
     {
       n: 6, date: "2026-08-16", weekday: "Sunday",
-      title: "Gentle Day",
-      tagline: "No alarm · You got home at 22:30 last night · Protect this day",
+      title: "Skansen",
+      tagline: "No alarm · The day Skansen finally happened, since the Vasa ate all of Day 3 · Home for dinner",
       schedule: [
         { time: "Late morning", html: "Slow start. Nothing before midday." },
-        { time: "Option A — recommended", html: "<strong>Fjäderholmarna.</strong> A 30-minute boat from Slussen or Nybroplan to the nearest archipelago island. Swimming off the rocks, picnic spots, craft studios (glassblowing, pottery, a boatbuilder), easy paths." },
-        { time: "Option B", html: "<strong>Djurgården, slowly.</strong> Rosendals Trädgård for a garden-café lunch among the apple trees, then lawns and playgrounds." },
-        { time: "Option C", html: "<strong>Swimming.</strong> Långholmsbadet or Smedsuddsbadet — free." },
-        { time: "Option D", html: "Naturhistoriska today after all, if everyone wakes up bright — then swap Tuesday for Bergianska + Sjöhistoriska/Tekniska." }
+        { time: "~10:30", html: "<strong>To Djurgården.</strong> Tram 7 or bus, or the ferry from Slussen." },
+        { time: "11:00–17:30", html: "<strong>Skansen, the whole day.</strong> Djurgårdsslätten 49–51, open 10:00–18:00. The visit that got bumped from Day 3 — no rush at all this time. Check the feeding-times board at the entrance." },
+        { time: "within Skansen", html: "The Nordic zoo (bears, wolves, lynx, wolverines, moose), Lill-Skansen children's zoo, Baltic Sea Science Center, the 150 relocated buildings." },
+        { time: "17:45", html: "Tram 7 back to the centre, or the Djurgården ferry to Slussen (free with your pass, prettier)." },
+        { time: "Evening", html: "Home. Dinner in, nothing else planned." }
       ],
       info: [
-        { heading: "Fjäderholmarna — What to Know", html: "The 'Feather Islands' are the closest archipelago islands to the city. They lay outside the city's customs boundary and became famous for taverns where you could drink duty-free. A closed military zone for much of the 20th century, reopened in the 1980s." },
-        { heading: "🧒 Kids", html: "Swimming off the rocks is the whole point — bring towels. The craft workshops usually have someone actually working." }
+        { heading: "Skansen — What to Know", html: "Founded in <strong>1891</strong> by Artur Hazelius, Skansen is the <strong>world's oldest open-air museum</strong>. Around 150 buildings bought from across Sweden, dismantled, and rebuilt here. Attached is a Nordic zoo: brown bears, wolves, lynx, wolverines, moose and seals." },
+        { heading: "🧒 Kids", html: "Check feeding times, then go find the wolverines." },
+        { heading: "📝 Note", html: "This was Day 3's afternoon originally — the Vasa Museum took the whole of that day instead, so Skansen moved here. The other Day 6 ideas (Fjäderholmarna, a Djurgården garden lunch, free swimming) are still worth keeping in your back pocket — Day 13 is flagged as a genuine spare day if one of them fits." }
       ],
       places: [
-        { name: "Fjäderholmarna", wiki: "Fjäderholmarna", url: "", lat: 59.3204, lng: 18.1918, note: "30-min boat from Slussen/Nybroplan" },
-        { name: "Rosendals Trädgård", wiki: "Rosendals Trädgård", url: "https://www.rosendalstradgard.se/en/", lat: 59.3255, lng: 18.1176, note: "Garden café, Djurgården" },
-        { name: "Långholmsbadet", wiki: "Långholmen", url: "", lat: 59.3196, lng: 18.0247, note: "Free swimming" }
+        { name: "Skansen", wiki: "Skansen", url: "https://www.skansen.se/en/", lat: 59.3252, lng: 18.1032, note: "Open 10:00–18:00 · spent the whole day here" }
       ],
       photos: { album: "", images: [] }
     },
@@ -439,16 +435,18 @@ const TRIP = {
       title: "Södermalm & Fotografiska",
       tagline: "Or a genuine spare day",
       schedule: [
-        { time: "Morning", html: "<strong>Slow.</strong> You've now been on Södermalm three times — eclipse night, race day, today. Go back to whatever won." },
-        { time: "12:00–14:00", html: "<strong>SoFo and Södermalm.</strong> Some smaller shops keep short Sunday hours." },
+        { time: "Morning", html: "<strong>Slow.</strong> You've now been on Södermalm three times — eclipse night, race night, today. Good day to finally do the daylight Monteliusvägen walk that got bumped on Day 5 for the guard ceremony and the Catalan festival." },
+        { time: "12:00–14:00", html: "<strong>Monteliusvägen by daylight, then SoFo.</strong> A 500 m cliff-top walkway with the best skyline view in Stockholm, free, then some smaller shops keep short Sunday hours." },
         { time: "15:00–18:30", html: "<strong>Fotografiska.</strong> Stadsgårdshamnen 22. Open 10:00–23:00, no rush. Adults 225 SEK, free under 16. Check what's on before committing — exhibitions rotate." },
         { time: "Evening", html: "<strong>Dinner — not Aifur or Glenn Miller</strong>, both closed Sundays. The Fotografiska restaurant on the top floor has the view." }
       ],
       info: [
         { heading: "Södermalm & Fotografiska — What to Know", html: "Södermalm was for centuries the poor island — workers, dockhands, industries the city wanted downwind. Fotografiska opened in 2010 in Stora Tullhuset, a 1906 art nouveau customs house designed by Ferdinand Boberg." },
-        { heading: "🧒 Kids", html: "Walk back up to Skinnarviksberget in daylight and let them see what they were standing on during the eclipse — completely different without a crowd and a crescent sun." }
+        { heading: "🧒 Kids", html: "Walk back up to Skinnarviksberget in daylight and let them see what they were standing on during the eclipse — completely different without a crowd and a crescent sun." },
+        { heading: "📝 Still spare, if there's room", html: "Two Day 6 ideas never got used since that day went to Skansen instead: Fjäderholmarna (30-min boat from Slussen, swimming off the rocks, craft studios) and free swimming at Långholmsbadet. Either slots in if the morning runs long or Fotografiska gets cut." }
       ],
       places: [
+        { name: "Monteliusvägen", wiki: "Monteliusvägen", url: "", lat: 59.3186, lng: 18.0429, note: "Cliff-top walk, best skyline view" },
         { name: "Fotografiska", wiki: "Fotografiska", url: "https://www.fotografiska.com/sto/", lat: 59.3172, lng: 18.0813, note: "15:00–18:30 · 225 SEK, free under 16" },
         { name: "Skinnarviksberget (by day)", wiki: "Skinnarviksberget", url: "", lat: 59.3168, lng: 18.0308, note: "Revisit in daylight" }
       ],
