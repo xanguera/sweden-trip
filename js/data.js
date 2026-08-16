@@ -35,6 +35,7 @@ const TRIP = {
     { what: "Vasamuseet", when: "Thu 13 Aug, 08:30", price: "240 SEK adult; under-19 free", status: "ok", statusText: "No booking needed — just be there at opening" },
     { what: "Gröna Lund", when: "Mon 17 Aug, from ~14:00", price: "see price guide", status: "ok", statusText: "Open daily to 20 Aug — buy online the week before" },
     { what: "Stockholm City Hall tour", when: "Mon 24 Aug", price: "150 SEK adult, 60 SEK ages 7–18", status: "pending", statusText: "Tickets released one week ahead — reminder for 17 Aug" },
+    { what: "Uppsala train tickets ×4", when: "Sat 22 Aug, ~09:05 out / 18:00 back", price: "~200–250 SEK adult return", status: "pending", statusText: "Not covered by SL pass — book via SJ or Mälardalstrafik (MÄLAB) app" },
     { what: "SL 30-day tickets ×4", when: "Tue 11 Aug, on arrival", price: "~530 adult / ~355 reduced", status: "ok", statusText: "Buy at Arlanda C" }
   ],
 
@@ -96,7 +97,7 @@ const TRIP = {
     { range: "Aug 11–13", focus: "Arrival, the historic core & the eclipse", highlights: "Gamla Stan, Royal Palace + guided tour, eclipse from Skinnarviksberget, a full day at Vasamuseet" },
     { range: "Aug 14–16", focus: "Water, the guard, and the big night", highlights: "Vaxholm + the Kastell by public boat, Changing of the Guard, a Catalan folk festival, Midnattsloppet, Skansen" },
     { range: "Aug 17–19", focus: "Wrecks, rides, science & royalty", highlights: "Vrak, Gröna Lund, Naturhistoriska + Cosmonova, Bergianska, Glenn Miller, Drottningholm" },
-    { range: "Aug 20–22", focus: "Vikings, art & parks", highlights: "Sigtuna rune stones, Skeppsholmen + Moderna, Aifur, Hagaparken, Ulriksdal" },
+    { range: "Aug 20–22", focus: "Vikings, art & a day trip", highlights: "Sigtuna rune stones, Skeppsholmen + Moderna, Aifur, a day trip to Uppsala" },
     { range: "Aug 23–25", focus: "Winding down", highlights: "Fotografiska, Nobel + City Hall, farewell dinner, departure" }
   ],
 
@@ -405,27 +406,36 @@ const TRIP = {
     // ---------------- DAY 12 ----------------
     {
       n: 12, date: "2026-08-22", weekday: "Saturday",
-      title: "Haga, Ulriksdal & a Lego detour",
-      tagline: "Moved here from Thursday · Mostly a park day",
+      title: "Uppsala — a Day Trip",
+      tagline: "Cathedral, castle, the oldest university in Scandinavia, and the mounds at Gamla Uppsala · Haga & Ulriksdal bumped to make room",
       schedule: [
-        { time: "10:30", html: "Commuter train / bus north to Haga." },
-        { time: "11:00–12:00", html: "<strong>Fjärilshuset Haga Ocean</strong> (optional, 916 SEK for four). Do the butterfly house properly and walk past the sharks — you live near the Oceanário." },
-        { time: "12:00–14:00", html: "<strong>🌳 Hagaparken, and lunch in it.</strong> Free: the Copper Tents, the Echo Temple, and the exposed foundations of Gustav III's unfinished palace. Bring a picnic, or use the café by the Copper Tents." },
-        { time: "14:30–16:00", html: "<strong>Ulriksdals Slott.</strong> Open Tue–Sun 12:00–16:00, guided tours only — aim for the 15:00 English tour. ~120–140 SEK adult, 60–70 SEK per child. The Orangery Museum is closed for the season; the chapel, Confidencen theatre and Slottsträdgården are still open." },
-        { time: "16:30–18:00", html: "<strong>🧱 Optional Lego detour:</strong> the LEGO Store at Mall of Scandinavia, Stjärntorget 2, Solna — open to 21:00. Pick & Build wall and Build-a-Minifigure station." },
-        { time: "18:30", html: "<strong>Dinner on Rörstrandsgatan.</strong> Vasastan's restaurant street. Call ahead on a warm Saturday evening." }
+        { time: "08:15", html: "Early breakfast — a full day out of the city." },
+        { time: "08:45", html: "<strong>To Stockholm Central.</strong> Commuter train from Älvsjö, ~12 minutes." },
+        { time: "09:05", html: "<strong>🚆 Train to Uppsala.</strong> SJ Regional or Mälartåg, ~40 minutes direct. Not covered by your SL pass — buy return tickets in advance via the SJ app or Mälardalstrafik (MÄLAB)." },
+        { time: "09:45", html: "<strong>Arrive Uppsala Central.</strong> Walk into the old town, ~15 minutes along the Fyrisån river, or hop a local bus." },
+        { time: "10:00–11:00", html: "<strong>Uppsala Cathedral (Domkyrkan).</strong> Scandinavia's largest cathedral. Free entry. Find Gustav Vasa's tomb and Carl Linnaeus's grave." },
+        { time: "11:15–12:15", html: "<strong>Uppsala Castle.</strong> Gustav Vasa's 16th-century hilltop fortress, rebuilt after fire. Views over the cathedral and the old town from the terrace." },
+        { time: "12:15–13:30", html: "<strong>Lunch.</strong> Saluhallen food market, or a café down by the Fyrisån." },
+        { time: "13:30–14:15", html: "<strong>Gustavianum.</strong> Uppsala University's oldest surviving building (1625) — the anatomical theatre under the onion dome, and the Augsburg Art Cabinet." },
+        { time: "14:30", html: "<strong>Bus 2 (or a 20-minute walk/cycle) north to Gamla Uppsala.</strong>" },
+        { time: "14:45–16:15", html: "<strong>Gamla Uppsala.</strong> Three huge royal burial mounds from the 5th–6th centuries, a pagan temple site turned church, and a small free museum on the excavations." },
+        { time: "16:30", html: "Back into town by bus or on foot." },
+        { time: "17:00–17:45", html: "<strong>Fika by the river,</strong> or Linnéträdgården (Linnaeus's restored 18th-century botanical garden) if everyone still has legs." },
+        { time: "18:00", html: "<strong>🚆 Train back to Stockholm,</strong> ~40 minutes, arriving Uppsala Central around 18:45." },
+        { time: "19:15", html: "<strong>Dinner</strong> in town or back near Älvsjö, depending on how the trains line up." }
       ],
       info: [
-        { heading: "⚠️ Ring Ulriksdal before you go", html: "+46 8 402 61 00 (weekday mornings). Entry is by guided tour only and the English slot is a single 15:00 departure — this is the one booking on the trip a phone call genuinely de-risks." },
-        { heading: "Hagaparken — What to Know", html: "Gustav III's park, laid out from the 1780s as an English landscape garden. The Copper Tents were built purely because they looked good from the palace windows." },
-        { heading: "Ulriksdal — What to Know", html: "Built in the 1640s for Jakob De la Gardie. Its jewel is Confidencen, Sweden's oldest surviving rococo theatre — named after a dining table on a mechanism that could be lowered through the floor, loaded downstairs, and raised again fully laid." },
-        { heading: "🧒 Kids", html: "In the butterfly house, stand still in a bright shirt and wait — they land on people. At Ulriksdal, let them run the grounds and the water." }
+        { heading: "🚆 Getting there", html: "Uppsala sits outside the SL zone, so the 30-day pass doesn't cover it. Direct trains run roughly every 15–20 minutes from Stockholm Central, journey time 35–45 minutes. A same-day return is around 200–250 SEK per adult — book ahead on the SJ app for the fastest InterCity/Mälartåg services." },
+        { heading: "Uppsala — What to Know", html: "Sweden's fourth-largest city and home to <strong>Uppsala University</strong>, founded in <strong>1477</strong> — the oldest university in Scandinavia. The Cathedral, consecrated in 1435, is where Swedish monarchs were once crowned. Carl Linnaeus, the father of modern taxonomy, taught and is buried here." },
+        { heading: "Gamla Uppsala — What to Know", html: "Old Uppsala was a major pagan religious and political centre before the city moved south in the 13th century. The three royal mounds date to the <strong>5th–6th centuries AD</strong> and, per legend, hold early Swedish kings — excavation of the Eastern Mound confirmed a high-status male burial from around 575 AD." },
+        { heading: "💡 Did you know?", html: "Anders Celsius, inventor of the temperature scale, was a professor at Uppsala University and built its observatory. His original scale, oddly, ran the other way up — 0° was boiling, 100° was freezing." },
+        { heading: "🧒 Kids", html: "The mounds at Gamla Uppsala are climbable — a genuine 1,500-year-old hill to stand on top of. At Gustavianum, the anatomical theatre is delightfully grim: ask what 17th-century medical students actually watched happen there." }
       ],
       places: [
-        { name: "Fjärilshuset Haga Ocean", wiki: "", url: "https://www.fjarilshuset.se/en/", lat: 59.3568, lng: 18.0349, note: "Optional · 10:00–17:00" },
-        { name: "Hagaparken", wiki: "Haga Park", url: "https://www.kungligaslotten.se/english/royal-palaces-and-sites/haga-park.html", lat: 59.3596, lng: 18.0323, note: "Free · Copper Tents, Echo Temple" },
-        { name: "Ulriksdals Slott", wiki: "Ulriksdal Palace", url: "https://www.kungligaslotten.se/english/royal-palaces-and-sites/ulriksdal-palace.html", lat: 59.3752, lng: 18.0261, note: "15:00 English tour" },
-        { name: "LEGO Store, Mall of Scandinavia", wiki: "", url: "https://www.lego.com/en-se/stores", lat: 59.3708, lng: 18.0018, note: "Optional · to 21:00" }
+        { name: "Uppsala Cathedral", wiki: "Uppsala Cathedral", url: "https://uppsaladomkyrka.se/en/", lat: 59.8583, lng: 17.6353, note: "10:00–11:00 · free" },
+        { name: "Uppsala Castle", wiki: "Uppsala Castle", url: "https://uppsalaslott.com/en/", lat: 59.8567, lng: 17.6371, note: "11:15–12:15" },
+        { name: "Gustavianum", wiki: "Gustavianum", url: "https://www.gustavianum.uu.se/en/", lat: 59.8578, lng: 17.6335, note: "13:30–14:15 · anatomical theatre" },
+        { name: "Gamla Uppsala", wiki: "Old Uppsala", url: "https://www.raa.se/in-english/visit-a-historic-site/gamla-uppsala/", lat: 59.8974, lng: 17.6349, note: "14:45–16:15 · royal burial mounds" }
       ],
       photos: { album: "", images: [] }
     },
@@ -443,7 +453,7 @@ const TRIP = {
       info: [
         { heading: "Södermalm & Fotografiska — What to Know", html: "Södermalm was for centuries the poor island — workers, dockhands, industries the city wanted downwind. Fotografiska opened in 2010 in Stora Tullhuset, a 1906 art nouveau customs house designed by Ferdinand Boberg." },
         { heading: "🧒 Kids", html: "Walk back up to Skinnarviksberget in daylight and let them see what they were standing on during the eclipse — completely different without a crowd and a crescent sun." },
-        { heading: "📝 Still spare, if there's room", html: "Two Day 6 ideas never got used since that day went to Skansen instead: Fjäderholmarna (30-min boat from Slussen, swimming off the rocks, craft studios) and free swimming at Långholmsbadet. Either slots in if the morning runs long or Fotografiska gets cut." }
+        { heading: "📝 Still spare, if there's room", html: "A few ideas are still floating and unscheduled: Fjäderholmarna and free swimming at Långholmsbadet (bumped from Day 6, which went to Skansen instead), and Hagaparken plus Ulriksdals Slott (bumped from Day 12, which became the Uppsala day trip). Any of them slots in if the morning runs long, Fotografiska gets cut, or this ends up a genuinely lazy day instead." }
       ],
       places: [
         { name: "Monteliusvägen", wiki: "Monteliusvägen", url: "", lat: 59.3186, lng: 18.0429, note: "Cliff-top walk, best skyline view" },
