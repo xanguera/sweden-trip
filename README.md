@@ -1,27 +1,6 @@
 # Sweden 2026 — Family Trip Site
 
-A private, password-gated website for the family trip to Stockholm, 11–25 August 2026. Built from the trip planning doc: day-by-day schedule, a map, place links, and a photo viewer for each day.
-
-## Enabling the site (GitHub Pages)
-
-1. On GitHub, go to **Settings → Pages** for this repo.
-2. Under **Build and deployment**, set **Source** to "Deploy from a branch".
-3. Pick the branch this was merged into (e.g. `main`) and folder `/ (root)`.
-4. Save. GitHub will give you a URL like `https://xanguera.github.io/sweden-trip/` within a minute or two.
-
-No build step is needed — it's a static site (`index.html` + `css/` + `js/`).
-
-## The password
-
-The password is **`Anguera`** (capital A), set in `js/app.js` near the top:
-
-```js
-const PASSWORD = "Anguera";
-```
-
-**Important caveat:** this is a plain client-side check, not real security. Because GitHub Pages only serves static files (no server-side code), anyone who opens the page source or browser dev tools can read the password directly out of `app.js`. This is fine for keeping the page off search engines and casual visitors (the page also sets `noindex, nofollow`), but don't put anything on this site you wouldn't want a determined stranger to see. Once entered, the password is remembered in the browser's `localStorage` so you won't be asked again on that device — tap the 🔒 icon top-right to lock it again.
-
-If you ever want to change the password, edit that one line and push.
+A private website for the family trip to Stockholm, 11–25 August 2026. Built from the trip planning doc: day-by-day schedule, a map, place links, and a photo viewer for each day.
 
 ## Adding photos
 
